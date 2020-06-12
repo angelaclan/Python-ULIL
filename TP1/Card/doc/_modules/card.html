@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>card &mdash; Module Card 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Module Card 0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Module Card 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for card</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:mod:`card` module </span>
+
+<span class="sd">:author: ` YOUR NAME</span>
+<span class="sd">         Univ. Lille &lt;http://portail.fil.univ-lille1.fr&gt;`_</span>
+
+<span class="sd">:date: 2017, september. Last revision: 2017, september</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+<span class="kn">import</span> <span class="nn">random</span>
+
+
+
+<div class="viewcode-block" id="Card"><a class="viewcode-back" href="../card.html#card.Card">[docs]</a><span class="k">class</span> <span class="nc">Card</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cards are defined by a value and a color.</span>
+<span class="sd">    Possible values and colors are listed in ``Card.VALUES`` and ``Card.COLORS``.</span>
+
+<span class="sd">    &gt;&gt;&gt; c1 = Card(&quot;Ace&quot;, &quot;heart&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; c1.get_color()</span>
+<span class="sd">    &#39;heart&#39;</span>
+<span class="sd">    &gt;&gt;&gt; c1.get_value()</span>
+<span class="sd">    &#39;Ace&#39;</span>
+<span class="sd">    &gt;&gt;&gt; c1</span>
+<span class="sd">    Card(&quot;Ace&quot;, &quot;heart&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; c2 = Card.random()</span>
+<span class="sd">    &gt;&gt;&gt; c2.get_value() in Card.VALUES</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; c2.get_color() in Card.COLORS</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; c1 == c1</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; c1 != c1</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; c1 &lt; c1</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; c1 &lt;= c1</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">## tuple of possible values and colors in ascending order</span>
+    <span class="n">VALUES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Knight&quot;</span><span class="p">,</span> <span class="s2">&quot;Queen&quot;</span><span class="p">,</span> <span class="s2">&quot;King&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    possible values for card&#39;s construction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">COLORS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;spade&quot;</span><span class="p">,</span> <span class="s2">&quot;heart&quot;</span><span class="p">,</span> <span class="s2">&quot;diamond&quot;</span><span class="p">,</span> <span class="s2">&quot;club&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    possible colors for card&#39;s construction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        creates a card with value and color</span>
+
+<span class="sd">        :param value: value of the card</span>
+<span class="sd">        :type value: element of `Card.VALUES`</span>
+<span class="sd">        :param color: color of the card</span>
+<span class="sd">        :type color: element of `Card.COLORS`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+    
+<div class="viewcode-block" id="Card.random"><a class="viewcode-back" href="../card.html#card.Card.random">[docs]</a>    <span class="k">def</span> <span class="nf">random</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        create a card whose value and color are randomly chosen</span>
+<span class="sd">        </span>
+<span class="sd">        :returns: *(card)* -- a randomly chosen card</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; c = Card.random()</span>
+<span class="sd">        &gt;&gt;&gt; c.get_value() in Card.VALUES</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c.get_color() in Card.COLORS</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+    
+<div class="viewcode-block" id="Card.get_color"><a class="viewcode-back" href="../card.html#card.Card.get_color">[docs]</a>    <span class="k">def</span> <span class="nf">get_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns the color of the card</span>
+
+<span class="sd">        :return: the color of the card</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :UC: none</span>
+<span class="sd">        :Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; c = Card(&#39;Ace&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.get_color()</span>
+<span class="sd">        &#39;heart&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Card.get_value"><a class="viewcode-back" href="../card.html#card.Card.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns the value of the card</span>
+<span class="sd">    </span>
+<span class="sd">        :param card: the card</span>
+<span class="sd">        :type card: card</span>
+<span class="sd">        :returns:  the value of the card</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :UC: none</span>
+<span class="sd">        :Example:</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; c = Card(&#39;Ace&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.get_value()</span>
+<span class="sd">        &#39;Ace&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+    
+<div class="viewcode-block" id="Card.compare_value"><a class="viewcode-back" href="../card.html#card.Card.compare_value">[docs]</a>    <span class="k">def</span> <span class="nf">compare_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         compares cards values</span>
+
+<span class="sd">         :param card: the second card</span>
+<span class="sd">         :type card: card</span>
+<span class="sd">         :return: (int)</span>
+
+<span class="sd">            * a positive number if self&#39;s value is greater than card&#39;s</span>
+<span class="sd">            * a negative number if self&#39;s value is lower than card&#39;s</span>
+<span class="sd">            * 0 if self&#39;s value is the same greater than card&#39;s</span>
+<span class="sd">         :UC: none</span>
+<span class="sd">         :Example: </span>
+
+<span class="sd">         &gt;&gt;&gt; c1 = Card(&#39;Ace&#39;, &#39;heart&#39;)</span>
+<span class="sd">         &gt;&gt;&gt; c2 = Card(&#39;King&#39;, &#39;heart&#39;)</span>
+<span class="sd">         &gt;&gt;&gt; c3 = Card(&#39;Ace&#39;, &#39;spade&#39;)</span>
+<span class="sd">         &gt;&gt;&gt; c1.compare_value(c2) &lt; 0</span>
+<span class="sd">         True</span>
+<span class="sd">         &gt;&gt;&gt; c2.compare_value(c1) &gt; 0</span>
+<span class="sd">         True</span>
+<span class="sd">         &gt;&gt;&gt; c3.compare_value(c1) == 0</span>
+<span class="sd">         True</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+         <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Card.compare_color"><a class="viewcode-back" href="../card.html#card.Card.compare_color">[docs]</a>    <span class="k">def</span> <span class="nf">compare_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        compares cars colors, returns : </span>
+<span class="sd">        </span>
+<span class="sd">        :param card: the second card</span>
+<span class="sd">        :type card: card</span>
+<span class="sd">        :returns: *(int)* --      </span>
+<span class="sd">          </span>
+<span class="sd">           * a positive number if self&#39;s color is greater than card&#39;s</span>
+<span class="sd">           * a negative number if self&#39;s color is lower than card&#39;s</span>
+<span class="sd">           * 0 if self&#39;s color is the same greater than card&#39;s</span>
+<span class="sd">        :UC: none</span>
+<span class="sd">        :Example: </span>
+
+<span class="sd">        &gt;&gt;&gt; c1 = Card(&#39;Ace&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c2 = Card(&#39;King&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c3 = Card(&#39;Ace&#39;, &#39;spade&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c1.compare_color(c3) &gt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c3.compare_color(c1) &lt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c1.compare_color(c2) == 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Card.compare"><a class="viewcode-back" href="../card.html#card.Card.compare">[docs]</a>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        compares cards.</span>
+
+<span class="sd">        Order on cards is defined  first by order on values, and in case of equal values </span>
+<span class="sd">        by order on colors. Order on values is defined by `VALUES` attribute. Same for colors.</span>
+
+<span class="sd">        :param card: the second card</span>
+<span class="sd">        :type card: card</span>
+
+<span class="sd">        :return: *(int)* --     </span>
+<span class="sd">          </span>
+<span class="sd">           * a positive number if self is greater than card</span>
+<span class="sd">           * a negative number if self is lower than card</span>
+<span class="sd">           * 0 if self is the same than card</span>
+
+<span class="sd">        :UC: none</span>
+<span class="sd">        :Example: </span>
+
+<span class="sd">        &gt;&gt;&gt; c1 = Card(&#39;Ace&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c2 = Card(&#39;King&#39;, &#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c3 = Card(&#39;Ace&#39;,&#39;spade&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c1bis = Card(&#39;Ace&#39;,&#39;heart&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c1.compare(c2) &lt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c2.compare(c1) &gt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c1.compare(c3) &gt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; c1bis.compare(c1bis) == 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+    
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo_dept_info.jpg" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Module Card 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2017, Chia-Ling Bragagnolo, Univ. Lille1</a>.
+      Last updated on 07/04/2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.
+    </div>
+  </body>
+</html>

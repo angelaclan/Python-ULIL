@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>card module &mdash; Module Card 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Module Card 0 documentation" href="index.html" />
+    <link rel="prev" title="Card project" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Card project"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Module Card 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="card-module">
+<h1><code class="docutils literal notranslate"><span class="pre">card</span></code> module<a class="headerlink" href="#card-module" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="index.html"><span class="doc">back</span></a></p>
+<dl class="py class">
+<dt id="card.Card">
+<em class="property">class </em><code class="sig-prename descclassname">card.</code><code class="sig-name descname">Card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cards are defined by a value and a color.
+Possible values and colors are listed in <code class="docutils literal notranslate"><span class="pre">Card.VALUES</span></code> and <code class="docutils literal notranslate"><span class="pre">Card.COLORS</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="s2">&quot;heart&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>
+<span class="go">&#39;heart&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+<span class="go">&#39;Ace&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span>
+<span class="go">Card(&quot;Ace&quot;, &quot;heart&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="n">Card</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="ow">in</span> <span class="n">Card</span><span class="o">.</span><span class="n">VALUES</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span> <span class="ow">in</span> <span class="n">Card</span><span class="o">.</span><span class="n">COLORS</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">==</span> <span class="n">c1</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">!=</span> <span class="n">c1</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">&lt;</span> <span class="n">c1</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">&lt;=</span> <span class="n">c1</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="py attribute">
+<dt id="card.Card.VALUES">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">VALUES</code><em class="property"> = ('Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Knight', 'Queen', 'King')</em><a class="headerlink" href="#card.Card.VALUES" title="Permalink to this definition">¶</a></dt>
+<dd><p>possible values for card’s construction</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="card.Card.COLORS">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">COLORS</code><em class="property"> = ('spade', 'heart', 'diamond', 'club')</em><a class="headerlink" href="#card.Card.COLORS" title="Permalink to this definition">¶</a></dt>
+<dd><p>possible colors for card’s construction</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getters">
+<h3>Getters<a class="headerlink" href="#getters" title="Permalink to this headline">¶</a></h3>
+<dl class="py method">
+<dt id="card.Card.get_value">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the value of the card</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>card</strong> (<em>card</em>) – the card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the card</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">UC</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+<span class="go">&#39;Ace&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="card.Card.get_color">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">get_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.get_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.get_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the color of the card</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the color of the card</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>
+<span class="go">&#39;heart&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="comparison-operator">
+<h3>Comparison operator<a class="headerlink" href="#comparison-operator" title="Permalink to this headline">¶</a></h3>
+<dl class="py method">
+<dt id="card.Card.compare_value">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">compare_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">card</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.compare_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.compare_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>compares cards values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>card</strong> (<em>card</em>) – the second card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>(int)</p>
+<ul class="simple">
+<li><p>a positive number if self’s value is greater than card’s</p></li>
+<li><p>a negative number if self’s value is lower than card’s</p></li>
+<li><p>0 if self’s value is the same greater than card’s</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;spade&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">compare_value</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">compare_value</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span><span class="o">.</span><span class="n">compare_value</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="card.Card.compare_color">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">compare_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">card</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.compare_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.compare_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>compares cars colors, returns :</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>card</strong> (<em>card</em>) – the second card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(int)</em> –</p>
+<ul class="simple">
+<li><p>a positive number if self’s color is greater than card’s</p></li>
+<li><p>a negative number if self’s color is lower than card’s</p></li>
+<li><p>0 if self’s color is the same greater than card’s</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;spade&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">compare_color</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span><span class="o">.</span><span class="n">compare_color</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">compare_color</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="card.Card.compare">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">card</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>compares cards.</p>
+<p>Order on cards is defined  first by order on values, and in case of equal values 
+by order on colors. Order on values is defined by <cite>VALUES</cite> attribute. Same for colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>card</strong> (<em>card</em>) – the second card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(int)</em> –</p>
+<ul class="simple">
+<li><p>a positive number if self is greater than card</p></li>
+<li><p>a negative number if self is lower than card</p></li>
+<li><p>0 if self is the same than card</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span><span class="s1">&#39;spade&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1bis</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span><span class="s1">&#39;heart&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1bis</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">c1bis</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="random-card">
+<h3>Random card<a class="headerlink" href="#random-card" title="Permalink to this headline">¶</a></h3>
+<dl class="py method">
+<dt id="card.Card.random">
+<code class="sig-prename descclassname">Card.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/card.html#Card.random"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#card.Card.random" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a card whose value and color are randomly chosen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>(card)</em> – a randomly chosen card</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Card</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="ow">in</span> <span class="n">Card</span><span class="o">.</span><span class="n">VALUES</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span> <span class="ow">in</span> <span class="n">Card</span><span class="o">.</span><span class="n">COLORS</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo_dept_info.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">card</span></code> module</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#methods">Methods</a><ul>
+<li><a class="reference internal" href="#getters">Getters</a></li>
+<li><a class="reference internal" href="#comparison-operator">Comparison operator</a></li>
+<li><a class="reference internal" href="#random-card">Random card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Card project</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/card.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Card project"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Module Card 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2017, Chia-Ling Bragagnolo, Univ. Lille1</a>.
+      Last updated on 07/04/2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.
+    </div>
+  </body>
+</html>

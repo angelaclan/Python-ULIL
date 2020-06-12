@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ap2_decorators &mdash; Recursion 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Recursion 0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Recursion 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for ap2_decorators</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:module: ap2_decorators  </span>
+<span class="sd">:author: FIL - Faculté des Sciences et Technologies -  Univ. Lille &lt;http://portail.fil.univ-lille1.fr&gt;_</span>
+<span class="sd">:date: 2018, september</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+
+<div class="viewcode-block" id="trace"><a class="viewcode-back" href="../tracing_recursion.html#ap2_decorators.trace">[docs]</a><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">fct</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Decorator for tracing every call to fct.</span>
+<span class="sd">    Recursive calls are indented.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; @trace</span>
+<span class="sd">    ... def fact(n):</span>
+<span class="sd">    ...     if n == 0:</span>
+<span class="sd">    ...         return 1</span>
+<span class="sd">    ...     else:</span>
+<span class="sd">    ...         return n * fact(n - 1)</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; fact(5)</span>
+<span class="sd">     -&gt; fact((5,), {})</span>
+<span class="sd">    ... -&gt; fact((4,), {})</span>
+<span class="sd">    ...... -&gt; fact((3,), {})</span>
+<span class="sd">    ......... -&gt; fact((2,), {})</span>
+<span class="sd">    ............ -&gt; fact((1,), {})</span>
+<span class="sd">    ............... -&gt; fact((0,), {})</span>
+<span class="sd">    ............... &lt;- 1</span>
+<span class="sd">    ............ &lt;- 1</span>
+<span class="sd">    ......... &lt;- 2</span>
+<span class="sd">    ...... &lt;- 6</span>
+<span class="sd">    ... &lt;- 24</span>
+<span class="sd">    &lt;- 120</span>
+<span class="sd">    120</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">fct</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">dots</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span> <span class="o">*</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">__depth</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:s}</span><span class="s1"> -&gt; </span><span class="si">{:s}{:s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dots</span><span class="p">,</span> <span class="n">wrapper</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">repr</span><span class="p">((</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))))</span>
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">__depth</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">fct</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">__depth</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:s}</span><span class="s1"> &lt;- </span><span class="si">{:s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dots</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">y</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">__depth</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+<span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">fct</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    decorator for counting  calls to  function fct</span>
+<span class="sd">    </span>
+<span class="sd">    :Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; @count</span>
+<span class="sd">    ... def fact(n):</span>
+<span class="sd">    ...     if n == 0:</span>
+<span class="sd">    ...         return 1</span>
+<span class="sd">    ...     else:</span>
+<span class="sd">    ...         return n * fact(n - 1)</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; fact.counter</span>
+<span class="sd">    0</span>
+<span class="sd">    &gt;&gt;&gt; fact(5)</span>
+<span class="sd">    120</span>
+<span class="sd">    &gt;&gt;&gt; fact.counter</span>
+<span class="sd">    6</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">fct</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">fct</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">y</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="k">def</span> <span class="nf">memoize</span><span class="p">(</span><span class="n">fct</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    decorator for memoizing computed values of  function fct</span>
+<span class="sd">    </span>
+<span class="sd">    :Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; @count</span>
+<span class="sd">    ... @memoize</span>
+<span class="sd">    ... def fact(n):</span>
+<span class="sd">    ...     if n == 0:</span>
+<span class="sd">    ...         return 1</span>
+<span class="sd">    ...     else:</span>
+<span class="sd">    ...         return n * fact(n - 1)</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; fact.counter</span>
+<span class="sd">    0</span>
+<span class="sd">    &gt;&gt;&gt; fact(5)</span>
+<span class="sd">    120</span>
+<span class="sd">    &gt;&gt;&gt; fact.counter</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; fact.counter = 0</span>
+<span class="sd">    &gt;&gt;&gt; fact(5)</span>
+<span class="sd">    120</span>
+<span class="sd">    &gt;&gt;&gt; fact.counter</span>
+<span class="sd">    1</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">fct</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">((</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">fct</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+            <span class="k">return</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">optionflags</span><span class="o">=</span><span class="n">doctest</span><span class="o">.</span><span class="n">NORMALIZE_WHITESPACE</span> <span class="o">|</span> <span class="n">doctest</span><span class="o">.</span><span class="n">ELLIPSIS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    
+
+
+
+
+
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/UL-FST-informatique-rvb.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Recursion 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2018, Chia-Ling Bragagnolo, FIL, FST, Univ. Lille</a>.
+      Last updated on 09/04/2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.
+    </div>
+  </body>
+</html>

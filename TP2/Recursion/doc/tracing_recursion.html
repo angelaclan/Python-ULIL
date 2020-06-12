@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tracing recursion &mdash; Recursion 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Recursion 0 documentation" href="index.html" />
+    <link rel="next" title="Fibonacci numbers" href="fibonacci.html" />
+    <link rel="prev" title="Recursion project" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="fibonacci.html" title="Fibonacci numbers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Recursion project"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Recursion 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tracing-recursion">
+<h1>Tracing recursion<a class="headerlink" href="#tracing-recursion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tracing-factorial-computation">
+<h2>Tracing factorial computation<a class="headerlink" href="#tracing-factorial-computation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ap2_decorators.trace">
+<code class="sig-prename descclassname">ap2_decorators.</code><code class="sig-name descname">trace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fct</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ap2_decorators.html#trace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ap2_decorators.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator for tracing every call to fct.
+Recursive calls are indented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@trace</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fact</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go"> -&gt; fact((5,), {})</span>
+<span class="gp">... </span><span class="o">-&gt;</span> <span class="n">fact</span><span class="p">((</span><span class="mi">4</span><span class="p">,),</span> <span class="p">{})</span>
+<span class="go">...... -&gt; fact((3,), {})</span>
+<span class="go">......... -&gt; fact((2,), {})</span>
+<span class="go">............ -&gt; fact((1,), {})</span>
+<span class="go">............... -&gt; fact((0,), {})</span>
+<span class="go">............... &lt;- 1</span>
+<span class="go">............ &lt;- 1</span>
+<span class="go">......... &lt;- 2</span>
+<span class="go">...... &lt;- 6</span>
+<span class="gp">... </span><span class="o">&lt;-</span> <span class="mi">24</span>
+<span class="go">&lt;- 120</span>
+<span class="go">120</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="other-recursive-functions">
+<h2>Other recursive functions<a class="headerlink" href="#other-recursive-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="function-add">
+<h3>Function <code class="docutils literal notranslate"><span class="pre">add</span></code><a class="headerlink" href="#function-add" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="predicate-is-palindromic">
+<h3>Predicate <code class="docutils literal notranslate"><span class="pre">is_palindromic</span></code><a class="headerlink" href="#predicate-is-palindromic" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="function-binomial">
+<h3>Function <code class="docutils literal notranslate"><span class="pre">binomial</span></code><a class="headerlink" href="#function-binomial" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/UL-FST-informatique-rvb.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tracing recursion</a><ul>
+<li><a class="reference internal" href="#tracing-factorial-computation">Tracing factorial computation</a></li>
+<li><a class="reference internal" href="#other-recursive-functions">Other recursive functions</a><ul>
+<li><a class="reference internal" href="#function-add">Function <code class="docutils literal notranslate"><span class="pre">add</span></code></a></li>
+<li><a class="reference internal" href="#predicate-is-palindromic">Predicate <code class="docutils literal notranslate"><span class="pre">is_palindromic</span></code></a></li>
+<li><a class="reference internal" href="#function-binomial">Function <code class="docutils literal notranslate"><span class="pre">binomial</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Recursion project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fibonacci.html"
+                        title="next chapter">Fibonacci numbers</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tracing_recursion.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="fibonacci.html" title="Fibonacci numbers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Recursion project"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Recursion 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2018, Chia-Ling Bragagnolo, FIL, FST, Univ. Lille</a>.
+      Last updated on 09/04/2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.
+    </div>
+  </body>
+</html>
